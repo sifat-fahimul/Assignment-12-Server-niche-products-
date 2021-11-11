@@ -38,7 +38,6 @@ async function run() {
 
             const bike = req.body;
             const result = await bikesCollection.insertOne(bike);
-            console.log(bike);
             res.json(result);
         })
         //get single api
@@ -46,7 +45,6 @@ async function run() {
             const id = req.params.id;
             const query = { _id: ObjectId(id) }
             const result = await bikesCollection.findOne(query)
-            console.log(result);
             res.json(result)
 
         })
