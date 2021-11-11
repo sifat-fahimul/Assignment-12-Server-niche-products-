@@ -116,6 +116,13 @@ async function run() {
             }
             res.json({ admin: isAdmin });
         })
+        //delete product api
+        app.delete('/products/delete/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await bikesCollection.deleteOne(query)
+            res.json(result)
+        })
 
     }
     finally {
