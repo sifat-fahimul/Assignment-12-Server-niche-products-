@@ -60,6 +60,14 @@ async function run() {
             const order = await cursor.toArray()
             res.json(order)
         })
+        //get api orders by email
+        app.get('/orders/user', async (req, res) => {
+            const email = req.query.email;
+            const query = { email: email }
+            const cursor = orderCollection.find(query)
+            const order = await cursor.toArray()
+            res.json(order)
+        })
         //delete order api
         app.delete('/delete/:id', async (req, res) => {
             const id = req.params.id;
